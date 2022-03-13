@@ -8,49 +8,45 @@ todoButton.addEventListener('click', addTodo);
 todoList.addEventListener('click', deleteCheck);
 
 
-
 //functions
 
-
 function addTodo(event) {
-    //Prevent form from submitting
-    event.preventDefault();
-    //Todo DIV
+    event.preventDefault(); //prevent form from submitting
     const todoDiv = document.createElement("div");
     todoDiv.classList.add("todo");
-    //Create LI
     const newTodo = document.createElement('li');
     newTodo.innerText = todoInput.value;
     newTodo.classList.add('todo-item');
     todoDiv.appendChild(newTodo);
-    //Check mark button
+
+    //check mark button
     const completedButton = document.createElement('button');
     completedButton.innerHTML = '<i class="fas fa-check"></i>';
     completedButton.classList.add("complete-btn");
     todoDiv.appendChild(completedButton);
-    //Check trash button
+
+    //check mark button
     const trashButton = document.createElement('button');
     trashButton.innerHTML = '<i class="fas fa-trash"></i>';
     trashButton.classList.add("trash-btn");
     todoDiv.appendChild(trashButton);
-    //Append to list
-    todoList.appendChild(todoDiv);
-    //clear todo input value
-    todoInput.value = "";
+
+    todoList.appendChild(todoDiv); //append to list
+    todoInput.value = ""; //clear to do input value
 }
 
 function deleteCheck(e) {
     const item = e.target;
-    //Delete todo
+    //DELETE TODO
     if(item.classList[0] === 'trash-btn') {
         const todo = item.parentElement;
         todo.classList.add('fall');
     }
 
-    //Check Mark
-    if(item.classList[0] === 'complete-btn') {
+    //COMPLETE TODO (checkmark)
+    if(item.classList[0] === 'complete-btn'){
         const todo = item.parentElement;
         todo.classList.toggle('completed');
     }
+    
 }
-
